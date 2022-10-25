@@ -6,4 +6,19 @@
 
 import { apiRings } from './apiRings';
 
-apiRings().then(console.log);
+const heroList = document.querySelector('.heroList');
+
+apiRings().then(console.log),
+  function renderHeroes(heroes) {
+    const markup = users
+      .map(hero => {
+        return `<li>
+        <p><b>Name</b>: ${hero.name}</p>
+        <p><b>Race</b>: ${hero.race}</p>
+        <p><b>Gender</b>: ${hero.gender}</p>
+        </li>
+        `;
+      })
+      .join('');
+    heroList.innerHTML = markup;
+  };
